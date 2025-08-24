@@ -1,1 +1,15 @@
 GET http://localhost:8000/users
+
+###
+
+GET http://localhost:8000/users/68ab6942c4144a51d30868b0
+
+###
+
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "name": "Ioana",
+    "age": "21  "
+}

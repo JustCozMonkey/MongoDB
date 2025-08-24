@@ -17,8 +17,6 @@ mongoose.connect(MONGOURL).then(async () => {
     app.listen(PORT, () => {
         console.log(`connected to port ${PORT}`)
     })
-    const user = await User.insertMany([{ name: "Daniel", age: 24 }, { name: "George", age: 20 }])
-    console.log("Users inserați:", user);
 }).catch((e) => {
     console.log(e)
 })
