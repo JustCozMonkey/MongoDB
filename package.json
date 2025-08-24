@@ -1,0 +1,28 @@
+{
+  "name": "mongodb",
+  "version": "1.0.0",
+  "description": "connect mongo db with express",
+  "homepage": "https://github.com/JustCozMonkey/MongoDB#readme",
+  "bugs": {
+    "url": "https://github.com/JustCozMonkey/MongoDB/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustCozMonkey/MongoDB.git"
+  },
+  "license": "ISC",
+  "author": "Daniel",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
