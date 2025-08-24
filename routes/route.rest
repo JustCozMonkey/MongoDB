@@ -2,7 +2,7 @@ GET http://localhost:8000/users
 
 ###
 
-GET http://localhost:8000/users/68ab6942c4144a51d30868b0
+GET http://localhost:8000/users/68ab6b1e8cad212d096443db
 
 ###
 
@@ -10,6 +10,18 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "name": "Ioana",
-    "age": "21  "
+    "name": "Denis",
+    "age": "29"
 }
+
+###
+
+PATCH  http://localhost:8000/users/68ab6b1e8cad212d096443db
+Content-Type: application/json
+
+{
+    "age":22
+}
+###
+
+DELETE http://localhost:8000/users/68ab6ef116f4bb93fc23c19b

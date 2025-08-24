@@ -15,13 +15,10 @@ router.get("/", async (req, res) => {
     }
 })
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", getById, (req, res) => {
     try {
-
-        const id = req.params.id
-        const user = await User.findById(id)
-        console.log("User found:", user)
-        res.json(user)
+        console.log("User found by id:", req.user)
+        res.json(req.user)
     } catch (err) {
         console.error(err)
         res.status(500).send({ message: err.message })
@@ -30,8 +27,6 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
     try {
-
-
         const user = await User.insertOne(req.body)
         console.log("User inserted:", user)
         res.status(201).json(user)
@@ -41,7 +36,41 @@ router.post("/", async (req, res) => {
     }
 })
 
+router.patch("/:id", getById, async (req, res) => {
+    try {
+        Object.assign(req.user, req.body)
+        const updatedUser = await req.user.save();
+        res.json(updatedUser);
+    } catch (err) {
+        console.error(err)
+        res.status(500).send({ message: err.message })
+    }
+})
 
+router.delete("/:id", getById, async (req, res) => {
+    try {
+        await req.user.deleteOne()
+    } catch (err) {
+        console.error(err)
+        res.status(500).send({ message: err.message })
+    }
+})
+
+async function getById(req, res, next) {
+
+    try {
+        const user = await User.findById(req.params.id)
+        if (user == null) {
+            res.status(404).send({ message: "User not found" })
+        }
+        req.user = user
+        next()
+    }
+    catch (err) {
+        res.status(500).send({ message: err.message })
+    }
+
+}
 
 
 
